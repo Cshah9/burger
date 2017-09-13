@@ -1,32 +1,27 @@
 # burger
 
 ## Overview
-Week of 14 Homework Node Express Handlebars - Eat-Da-Burger - 
-
-This full-stack site will take in results of users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
-
+Week of 14 Homework Node Express Handlebars - Eat-Da-Burger - burger logger with MySQL, Node, Express, Handlebars and a homemade ORM. Follows MVC design pattern, using Node and MySQL to query and route data, and Handlebars to generate your HTML.
 
 ## Links
-  * GitHub Repo : https://github.com/Cshah9/FriendFinder
-  * ReadMe with Screenshots : https://github.com/Cshah9/FriendFinder/blob/master/README.md
-  * HEROKU link : https://frozen-brushlands-66832.herokuapp.com/
+  * GitHub Repo : https://github.com/Cshah9/burger
+  * ReadMe with Screenshots : https://github.com/Cshah9/burger/blob/master/README.md
+  * HEROKU link : https://floating-castle-35364.herokuapp.com/
   * Main code files 
-    * (apiRoutes.js) : https://github.com/Cshah9/FriendFinder/blob/master/app/routing/apiRoutes.js
-    * (survey.html) : https://github.com/Cshah9/FriendFinder/blob/master/app/public/survey.html
-      * js in script tag at end of file
+    * (/veiws/index.handlebars) : https://github.com/Cshah9/burger/blob/master/views/index.handlebars
+    * (/models/burger.js) : https://github.com/Cshah9/burger/blob/master/models/burger.js
+    
+     
 
 
 ## Screenshots
 
-### Home page
+### Get all Burgers
 ![1](/images/1.png)
 
-### Survey Page
+### Add a burger
 ![2](/images/2.png)
+
+### Devour a burger
 ![3](/images/3.png)
 
-### Results Modal (after Post)
-![4](/images/4.png)
-
-### API GET friends 
-![5](/images/5.png)
