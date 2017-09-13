@@ -2,20 +2,21 @@ var connection = require('./connection.js');
 
 
 module.exports = {
-	selectAll: function() {
-		var burgers= [];
+	selectAll: function(callback) {
+		var daBurgers= [];
 		console.log ("orm.selectAll()");
 
 		connection.query('SELECT * FROM burgers', function(err, res){
 			// console.log ("res", res);
 			for (var i = 0; i < res.length; i++) {
 				console.log(res[i]);
-				burgers.push({id: res[i], name: res[i].burger_name, devoured: res[i].devoured});
+				daBurgers.push({id: res[i].id, name: res[i].burger_name, devoured: res[i].devoured});
 			}
 
+			console.log("burgers", daBurgers);
+			callback(daBurgers);
 		});
-		console.log("burgers", burgers);
-		return burgers;
+		
 
 	},
 
@@ -45,6 +46,8 @@ module.exports = {
 			// for (var i = 0; i < res.length; i++) {
 			// 	console.log(res[i]);
 			// }
+			if(res.affectedRows == 1) return true;
+			return false;
 
 		});
 
