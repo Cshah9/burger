@@ -5,26 +5,37 @@ var burger = require("../models/burger.js");
 router.get('/', function(req,res) {
 	console.log("burgers_controller.js GET /");
 	burger.getBurgers(function(data){
-		res.json( data );
+		// res.json( data );
+		console.log(data)
+		res.render("index", {burgers: data});
+	});
+
+    
+});
+
+// router.get('/api/burgers', function(req,res) {
+// 	console.log("burgers_controller.js GET /api/burgers");
+//     burger.getBurgers(function(data){
+// 		res.json( data );
+// 	});
+// });
+
+router.post('/', function(req,res) {
+	console.log("burgers_controller.js Post");
+	burger.addBurger(req.body.name, function(data){
+		res.json( {id: data } );
 	});
     
 });
 
-router.get('/api/burgers', function(req,res) {
-	console.log("burgers_controller.js GET /api/burgers");
-    res.json( burger.getBurgers() );
-});
-
-router.post('/api/burger', function(req,res) {
-	console.log("burgers_controller.js Post /api/burger");
-    res.json( {id: burger.addBurger(req.body.name)} );
-});
-
-router.put('/api/burger/:id', function(req,res) {
-	console.log("burgers_controller.js PUT /api/burger");
+router.put('/:id', function(req,res) {
+	console.log("burgers_controller.js PUT /");
 	console.log("req.param.id:",  req.param.id);
-	if( burger.devourBurger(req.param.id) ) res.send("devoured");
- 	else res.send("PROBLEM - stuffed!");
+	burger.devourBurger(req.param.id, function(data){
+		if( data ) res.send("devoured");
+ 		else res.send("PROBLEM - stuffed!");
+	});
+	
 });
 
 module.exports = router;

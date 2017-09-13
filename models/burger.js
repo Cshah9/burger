@@ -4,20 +4,27 @@ var orm = require('../config/orm.js');
 module.exports = {
 	getBurgers: function(callback) {
 		console.log ("burgers.getBurgers()");
-		var temp = orm.selectAll(function(res){
+		orm.selectAll(function(res){
+			console.log ("burgers.getBurgers() callback");
 			callback(res);
 		});
-		console.log ("burgers.getBurgers() END temp", temp);
+		console.log ("burgers.getBurgers() END");
 		// return temp;
 	},
-	addBurger: function(burger)
+	addBurger: function(burger, callback)
 	{
 		console.log ("burgers.addBurger()", burger);
-		return orm.insertOne(burger);
+		 orm.insertOne(burger, function(res){
+			callback(res);
+		});
+		 console.log ("burgers.addBurger() END");
 	},
-	devourBurger: function(number) {
+	devourBurger: function(number, callback) {
 		console.log ("burgers.devourBurger()", number);
-		return orm.updateOne(number);
+		 orm.updateOne(number, function(res){
+			callback(res);
+		});
+		 console.log ("burgers.devourBurger() END");
 	}
 }
 // 

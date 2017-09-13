@@ -8,19 +8,21 @@ module.exports = {
 
 		connection.query('SELECT * FROM burgers', function(err, res){
 			// console.log ("res", res);
-			for (var i = 0; i < res.length; i++) {
-				console.log(res[i]);
-				daBurgers.push({id: res[i].id, name: res[i].burger_name, devoured: res[i].devoured});
-			}
+			// for (var i = 0; i < res.length; i++) {
+			// 	console.log(res[i]);
+			// 	daBurgers.push({id: res[i].id, name: res[i].burger_name, devoured: res[i].devoured});
+			// }
 
-			console.log("burgers", daBurgers);
-			callback(daBurgers);
+			// console.log("burgers", daBurgers);
+			// callback(daBurgers);
+			console.log("end of selectAll");
+			callback(res);
 		});
 		
 
 	},
 
-	insertOne: function(burgerName) {
+	insertOne: function(burgerName, callback) {
 
 		console.log ("orm.insertOne()");
 
@@ -31,12 +33,12 @@ module.exports = {
 			// 	console.log(res[i]);
 			// }
 			console.log("res.insertId", res.insertId)
-			return res.insertId;
+			callback(res.insertId);
 
 		});
 	},
 
-	updateOne: function(burgerId) {
+	updateOne: function(burgerId, callback) {
 
 		console.log ("orm.updateOne()");
 		
@@ -46,8 +48,8 @@ module.exports = {
 			// for (var i = 0; i < res.length; i++) {
 			// 	console.log(res[i]);
 			// }
-			if(res.affectedRows == 1) return true;
-			return false;
+			if(res.affectedRows == 1) callback(true);
+			else callback( false);
 
 		});
 
