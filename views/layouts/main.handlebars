@@ -7,6 +7,10 @@
 	</head>
 	<body>
 		<img src="/img/burger.jpg">
+		<form action="/{{this.id}}?_method=POST" method="POST">
+          <input type="input" name="name" value="enter burger name">
+          <button type="submit">Add Burger!</button>
+        </form>
 		{{{ body }}}
 	</body>
 </html>
