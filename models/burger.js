@@ -3,14 +3,17 @@ var orm = require('./config/orm.js');
 
 module.exports = {
 	getBurgers: function() {
-		orm.selectAll();
+		console.log ("burgers.getBurgers()");
+		return orm.selectAll();
 	}
 	addBurger: function(burger)
 	{
-		orm.insertOne(burger);
+		console.log ("burgers.addBurger()", burger);
+		return orm.insertOne(burger);
 	}
 	devourBurger: function(number) {
-		orm.updateOne(number);
+		console.log ("burgers.devourBurger()", number);
+		return orm.updateOne(number);
 	}
 }
 // 

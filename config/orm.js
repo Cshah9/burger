@@ -3,17 +3,19 @@ var connection = require('./connection.js');
 
 module.exports = {
 	selectAll: function() {
-
+		var burgers= [];
 		console.log ("orm.selectAll()");
 
 		connection.query('SELECT * FROM burgers', function(err, res){
 			// console.log ("res", res);
 			for (var i = 0; i < res.length; i++) {
 				console.log(res[i]);
+				burgers.push({id: res[i], name: res[i].burger_name, devoured: res[i].devoured});
 			}
 
 		});
-
+		console.log("burgers", burgers);
+		return burgers;
 
 	},
 
@@ -27,6 +29,8 @@ module.exports = {
 			// for (var i = 0; i < res.length; i++) {
 			// 	console.log(res[i]);
 			// }
+			console.log("res.insertId", res.insertId)
+			return res.insertId;
 
 		});
 	},
