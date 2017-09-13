@@ -33,7 +33,7 @@ module.exports = {
 			// 	console.log(res[i]);
 			// }
 			console.log("res.insertId", res.insertId)
-			callback(res.insertId);
+			callback(res);
 
 		});
 	},
@@ -48,8 +48,9 @@ module.exports = {
 			// for (var i = 0; i < res.length; i++) {
 			// 	console.log(res[i]);
 			// }
-			if(res.affectedRows == 1) callback(true);
-			else callback( false);
+			// if(res.affectedRows == 1) callback(true);
+			// else callback( false);
+			callback(res);
 
 		});
 

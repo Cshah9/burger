@@ -24,9 +24,10 @@ router.post('/', function(req,res) {
 
 	console.log("burgers_controller.js Post");
 	console.log("res",res);
-	// burger.addBurger(req.body.name, function(data){
-	// 	res.json( {id: data } );
-	// });
+	burger.addBurger(req.body.name, function(data){
+		// res.json( {id: data } );
+		res.redirect("/");
+	});
     
 });
 
